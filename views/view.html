@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<!-- saved from url=(0073)https://www.munnelly.com/full-stack/express-mongodb/assets/downloads/view -->
-<html lang="en"><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/content/location/location.js" id="eppiocemhmnlbhjplcgkofciiegomcon"></script><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/extend-native-history-api.js"></script><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/requests.js"></script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View a  Soccer Player</title>
     <meta name="description" content="Viewing a selected by _id soccer player from MongoDB Atlas using a GET route set up in the routes.js file of an Express app.">
-    <link rel="stylesheet" href="./View a Soccer Player_files/lunevedy.min.css">
+    <link rel="stylesheet" href="https://lunevedy.com/assets/2.0/css/lunevedy.min.css" />
 
     <style>
         body, header, section {background-color: #e8e7d5;}
@@ -44,7 +44,7 @@
 </head>
 
 
-<body data-new-gr-c-s-check-loaded="14.1154.0" data-gr-ext-installed="">
+<body>
 
     <header class="text-center-desktop text-center-mobile">
         <h1>View a Selected Soccer Player</h1>
@@ -55,9 +55,14 @@
         <section>
 
 
-        <table id="selected-player" class="data-table theme-light">
+        <table id ="selected-player" class="data-table theme-light">
 
-            <tbody><tr>
+            <tr>
+                <td colspan="2"><img id="profile_image" src="" alt="Profile Image"></td>
+                
+            </tr>
+
+            <tr>
                 <td><b>Rank</b></td>
                 <td id="rank">${player.rank}</td>
             </tr>
@@ -98,7 +103,7 @@
             </tr>
 
 
-        </tbody></table>
+        </table>
     </section>
 
     <script>
@@ -112,10 +117,12 @@
 
 
             try {
-                const response = await fetch('http://localhost:5000/soccer_players/'+myParam);
+                const response = await fetch('http://localhost:5000/soccer_players/view/'+myParam);
 
                 const data = await response.json();
+                console.log(data);
                 // populate table
+                document.getElementById('profile_image').src = "../public/images/" + data.profile_image;
                 document.getElementById('rank').innerText = data.rank;
                 document.getElementById('firstname').innerText = data.firstname;
                 document.getElementById('lastname').innerText = data.lastname;
@@ -151,26 +158,5 @@
 
     </script>
 
-
-
-</body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
-      div.grammarly-desktop-integration {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
-        -moz-user-select: none;
-        -webkit-user-select: none;
-        -ms-user-select:none;
-        user-select:none;
-      }
-
-      div.grammarly-desktop-integration:before {
-        content: attr(data-content);
-      }
-    </style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>
+</body>
+</html>
