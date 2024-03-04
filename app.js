@@ -1,14 +1,20 @@
-
+import dotenv from 'dotenv'
 import express from 'express'
-import { PORT, mongodbURL } from './config.js';
 import mongoose from 'mongoose';
 import cors from 'cors'
 import soccerPlayerRoutes from './routes/routes.js';
     
 
 function startServer(){
+
+    dotenv.config();
+
+    const PORT = process.env.PORT;
+    const mongodbURL = process.env.mongoDBUri;
+    const DBNAME = process.env.DBNAME;
     
     const app = express()
+
 
     app.use(cors())
     app.use(express.json());
@@ -24,7 +30,7 @@ function startServer(){
             await mongoose.connect((mongodbURL), { 
                 useNewUrlParser: true, 
                 useUnifiedTopology: true,
-                dbName: 'db_soccer_players'
+                dbName: DBNAME
             });
             console.log('Express app connected to MongoDB');
                 
