@@ -132,7 +132,7 @@
             console.log(JSON.stringify(formData));
 
             try {
-                const response = await fetch('http://localhost:5000/soccer_players/add', {
+                const response = await fetch('http://localhost:5000/soccer_players', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
