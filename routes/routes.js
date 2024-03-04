@@ -3,7 +3,7 @@ import express from 'express'
 const router = express.Router();
 
 import SoccerPlayerModel from '../models/model.js';
-import { player_add, player_delete, player_get, player_update, players_index } from '../controllers/controllers.js';
+import { player_add, player_delete, player_get, player_update, players_index } from '../controllers/soccer-players-controller.js';
 
 // List all players
 router.get('/soccer_players', players_index);

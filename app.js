@@ -10,7 +10,7 @@ function startServer(){
     dotenv.config();
 
     const PORT = process.env.PORT;
-    const mongodbURL = process.env.mongoDBUri;
+    const MONGO_DB_URI = process.env.MONGO_DB_URI;
     const DBNAME = process.env.DBNAME;
     
     const app = express()
@@ -28,7 +28,7 @@ function startServer(){
         
     async function connectToMongoDB() {
         try {
-            await mongoose.connect((mongodbURL), { 
+            await mongoose.connect((MONGO_DB_URI), { 
                 useNewUrlParser: true, 
                 useUnifiedTopology: true,
                 dbName: DBNAME
